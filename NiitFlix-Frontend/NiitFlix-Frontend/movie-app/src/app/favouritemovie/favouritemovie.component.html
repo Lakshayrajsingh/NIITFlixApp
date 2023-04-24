@@ -1,0 +1,73 @@
+<!-- <p>favouritemovie works!</p> -->
+<!-- <app-header></app-header> -->
+
+<div class="row" style="background-color: white;">
+      <div class="col">
+        <button mat-stroked-button color="primary" (click)="getTrending()"> Trending</button>
+        <!-- <button mat-stroked-button color="primary" (click)="getPopular()">Popular</button> -->
+        <button mat-stroked-button color="primary" (click)="getUpcoming()">UpComing</button>
+        <button mat-stroked-button color="primary" (click)="getTopRated()"> TopRated</button>
+        <button mat-stroked-button color="primary" (click)="goToFav()"> BackToMovies </button>
+      </div>
+
+      <div class="col" style="margin-top:2px; margin-left:30%;">
+        <!-- <div  class="input-group rounded">
+         <input class="form-control rounded" type="text" [(ngModel)]="search" name="search" id="search" placeholder="Search">
+        <button style="margin-left:-1%;" class="input-group-text border-0" (click)="searchMovies()">Search</button>
+        </div> -->
+    
+        <!-- <div>
+          <button mat-stroked-button color="warn" style="margin-left: 350px;">
+            <a class="nav-link" routerLink="/search">Search</a>
+          </button>
+        </div> -->
+      </div>
+    </div>
+    
+    <main>
+      <div class="movie" *ngFor="let list of movieLists.movieList; let i = index">
+        <!-- {{list|json}} -->
+        <div class="">
+          <button  class="btn bg-transparent" id="btn"  (click)="addToFavourites(list)"><mat-icon>favorite</mat-icon></button>
+          <button  class="btn bg-transparent" id="btn2"  (click)="getVideosPlaying(list.id)"><mat-icon>play_circle_outline</mat-icon> </button>
+          
+        </div>
+    
+        <img src="{{IMG_URL}}{{list.poster_path}}" alt="{{list.title}}">
+    
+        <div class="movie-info">
+          <h3>{{list.title}}</h3>
+          <span class="green">{{list.vote_average}}</span>
+    
+        </div>
+    
+        <div class="overview">
+          <h3 style="font-weight: bold;">Overview</h3>
+    
+          <div class="actions">
+            {{list.overview}}
+          </div>
+          <!-- <ng-container *ngFor="let a of movieLists">
+                <button (click)="addToFavourites(a)">AddTofav</button>
+                </ng-container> -->
+        </div>
+      </div>
+    
+    </main>
+    <div class="fav" fxLayout="row wrap" fxLayout.xs="column"   style="margin-left: 7px; margin-top: 5px;" >
+      
+        <div class= "dashboard" *ngFor="let x of favouriteMovieList" fxFlex="20%">
+            <!-- paginate: { itemsPerPage: count, currentPage: p } -->
+            <mat-card class="example-card"  > 
+        <mat-card-content  style="margin-left:28px;">
+          <img src="https://image.tmdb.org/t/p/w185/{{x.poster_path}}"><br>
+          <span style="color:white;">Title :{{x.title}}</span><br>
+          <span style="color:white;">Release Date: {{x.release_date}} </span><br>
+          <span style="color:white;">Vote Average: {{x.vote_average}} </span>
+              <button (click)="deleteMovieFromFavouriteList(x.id)" mat-icon-button color="warn" aria-label="Example icon button with a heart icon" matTooltip="Add to favourites"style=" padding-left:190px;" >
+                <mat-icon>delete</mat-icon>
+              </button>
+        </mat-card-content>
+        </mat-card>
+        </div>
+    </div>

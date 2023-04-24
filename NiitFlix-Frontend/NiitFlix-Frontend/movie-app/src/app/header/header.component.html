@@ -1,0 +1,19 @@
+
+  <mat-toolbar color="primary"> 
+    
+      <span routerLink="">NIITFlix</span>
+      <button class="btn bg-transparent" id="btn" *ngIf="auth.IsloggedIn() == false" style="margin-left: 75%;"><mat-icon class="icon" routerLink="/login">person</mat-icon></button>
+      <button class="btn bg-transparent" id="btn" *ngIf="auth.IsloggedIn()== false" routerLink="signup"><mat-icon class="icon">person_add</mat-icon></button>
+      <!-- <div>
+        <button mat-flat-button color="accent" style="margin-left: 30px;">
+          <a class="nav-link" routerLink="/search">Search</a>
+        </button>
+      </div> -->
+      <button class="btn bg-transparent" id="btn" (click)="logout()" *ngIf="auth.IsloggedIn() ==true"><mat-icon class="icon">exit_to_app</mat-icon></button>
+      <!-- <div>
+        <button mat-flat-button color="accent" style="margin-left: 1230px;">
+          <a class="nav-link" routerLink="/search">Search</a>
+        </button>
+      </div> -->
+    </mat-toolbar>
+ 

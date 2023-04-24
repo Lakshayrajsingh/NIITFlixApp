@@ -1,0 +1,52 @@
+<div class="row" style="background-color: white;">
+  <div class="col">
+    <button mat-stroked-button color="primary" (click)="getTrending()"> Trending</button>
+    <!-- <button mat-stroked-button color="primary" (click)="getPopular()">Popular</button> -->
+    <button mat-stroked-button color="primary" (click)="getUpcoming()">UpComing</button>
+    <button mat-stroked-button color="primary" (click)="getTopRated()"> TopRated</button>
+    <button mat-stroked-button color="primary" (click)="goToFav()"> MyFavourites</button>
+  </div>
+  <div class="col" style="margin-top:2px; margin-left:30%;">
+    <!-- <div  class="input-group rounded">
+     <input class="form-control rounded" type="text" [(ngModel)]="search" name="search" id="search" placeholder="Search">
+    <button style="margin-left:-1%;" class="input-group-text border-0" (click)="searchMovies()">Search</button>
+    </div> -->
+
+    <div>
+      <button mat-stroked-button color="warn" style="margin-left: 350px;">
+        <a class="nav-link" routerLink="/search">Search</a>
+      </button>
+    </div>
+  </div>
+</div>
+
+<main>
+  <div class="movie" *ngFor="let list of movieLists.movieList; let i = index">
+    <!-- {{list|json}} -->
+    <div class="">
+      <button  class="btn bg-transparent" id="btn"  (click)="addToFavourites(list)"><mat-icon>favorite</mat-icon></button>
+      <button  class="btn bg-transparent" id="btn2"  (click)="getVideosPlaying(list.id)"><mat-icon>play_circle_outline</mat-icon> </button>
+      
+    </div>
+
+    <img src="{{IMG_URL}}{{list.poster_path}}" alt="{{list.title}}">
+
+    <div class="movie-info">
+      <h3>{{list.title}}</h3>
+      <span class="green">{{list.vote_average}}</span>
+
+    </div>
+
+    <div class="overview">
+      <h3 style="font-weight: bold;">Overview</h3>
+
+      <div class="actions">
+        {{list.overview}}
+      </div>
+      <!-- <ng-container *ngFor="let a of movieLists">
+            <button (click)="addToFavourites(a)">AddTofav</button>
+            </ng-container> -->
+    </div>
+  </div>
+
+</main>
